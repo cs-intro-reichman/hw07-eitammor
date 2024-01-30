@@ -54,14 +54,22 @@ public class SpellChecker {
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		int min = threshold;
 		String retWord = "";
+		boolean once = false;
 
 		for (int i = 0 ; i < 3000 ; i++)
 		{
-			if (levenshtein(dictionary[i], word) <= min)
+			if (levenshtein(dictionary[i], word) <= min && !once)
+			{
+				retWord = dictionary[i];
+				min = levenshtein(dictionary[i], word);
+				once = true;
+			}
+			else if (levenshtein(dictionary[i], word) <= min && once)
 			{
 				retWord = dictionary[i];
 				min = levenshtein(dictionary[i], word);
 			}
+			
 		}
 		if (retWord.equals(""))
 		{
