@@ -64,7 +64,7 @@ public class SpellChecker {
 				min = levenshtein(dictionary[i], word);
 				once = true;
 			}
-			else if (levenshtein(dictionary[i], word) <= min && once)
+			else if (levenshtein(dictionary[i], word) < min && once)
 			{
 				retWord = dictionary[i];
 				min = levenshtein(dictionary[i], word);
