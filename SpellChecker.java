@@ -58,7 +58,8 @@ public class SpellChecker {
 
 		for (int i = 0 ; i < 3000 ; i++)
 		{
-			if (levenshtein(dictionary[i], word) <= min && !once)
+			// #feedback - in order to avoid calling levenshtein multiple times (recursive functions are inefficient), it is better to assign it to a variable once and use the variable only.
+			if (levenshtein(dictionary[i], word) <= min && !once) // #feedback - once is not needed and can be removed, you can define min to be threshold+1.
 			{
 				retWord = dictionary[i];
 				min = levenshtein(dictionary[i], word);
